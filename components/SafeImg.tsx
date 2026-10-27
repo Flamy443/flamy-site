@@ -13,6 +13,7 @@ export default function SafeImg({ src, alt }: { src: string; alt: string }) {
   }, []);
 
   if (failed) return null;
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   // eslint-disable-next-line @next/next/no-img-element
-  return <img ref={ref} src={src} alt={alt} onError={() => setFailed(true)} />;
+  return <img ref={ref} src={base + src} alt={alt} onError={() => setFailed(true)} />;
 }
